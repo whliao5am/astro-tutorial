@@ -6,6 +6,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const allPosts = await getCollection("blog");
 const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 const pageTitle = "Tag Index";
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout pageTitle={pageTitle}>
     <!-- <ul>
@@ -19,7 +20,7 @@ const pageTitle = "Tag Index";
     </div> -->
     <div class="tags">
         {tags.map((tag) => (
-          <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+          <p class="tag"><a href={`${base}tags/${tag}`}>{tag}</a></p>
         ))}
       </div>
 </BaseLayout>

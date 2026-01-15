@@ -31,6 +31,7 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+const base = import.meta.env.BASE_URL;
 // const filteredPosts = posts.filter((post: any) => post.frontmatter.tags?.includes(tag));
 ---
 <BaseLayout pageTitle={tag}>
@@ -39,6 +40,6 @@ const { posts } = Astro.props;
     <!-- {filteredPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)} -->
     <!-- {filteredPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title}/>)} -->
     <!-- {posts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title}/>)} -->
-    { posts.map((post) => <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />) }
+    { posts.map((post) => <BlogPost url={`${base}posts/${post.id}/`} title={post.data.title} />) }
   </ul>
 </BaseLayout>
